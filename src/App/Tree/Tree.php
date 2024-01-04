@@ -13,7 +13,7 @@ class Tree
     public function listToTree(array $list): array
     {
         $map = [];
-        /* @var ListDTO[] $clone */
+        /* @var ListDTO[] $flatTree */
         $flatTree = [];
 
         /* @var TreeDTO[] $result */

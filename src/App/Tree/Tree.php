@@ -37,4 +37,30 @@ class Tree
         return $result;
     }
 
+    /**
+     * @param TreeDTO[] $tree
+     * @return ListDTO[]
+     */
+    public function treeToList(array $tree): array
+    {
+        /* @var ListDTO[] $result */
+        $result = [];
+
+        /* @var TreeDTO[] $stack */
+        $stack = [...$tree];
+
+        while (count($stack) > 0) {
+            $current = array_shift($stack);
+            if ($current) {
+                $result[] = new ListDTO($current->id, $current->name, $current->parentId);
+
+                foreach ($current->children as $child) {
+                    $stack[] = $child;
+                }
+            }
+        }
+
+        return $result;
+    }
+
 }
